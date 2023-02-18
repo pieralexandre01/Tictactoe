@@ -1,0 +1,140 @@
+body {
+    margin: 0px;
+    font-family: Arial;
+    background-image: url("../images/peter-gargiulo-cGNCepznaV8-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+#app[v-cloak] {
+    display: none;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+header .actions {
+    margin: 30px 0px;
+}
+
+header .bt {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFF;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header .bt.bt-start {
+    color: rgb(10, 151, 10);
+}
+
+header .bt.bt-stop {
+    color: red;
+}
+
+header form label {
+    display: block;
+    margin: 3px 0px;
+}
+
+header form label span {
+    width: 100px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 10px;
+}
+
+header form input,
+header form select {
+    padding: 3px 8px;
+}
+
+header form input[type=text] {
+    width: 550px;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+
+header form input[type=number] {
+    width: 50px;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+
+#grille {
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+#grille::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: calc(100% / 3);
+    width: calc(100% / 3);
+    height: 100%;
+    border: 7px solid #FFF8;
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+#grille::after {
+    content: "";
+    position: absolute;
+    top: calc(100% / 3);
+    left: 0px;
+    width: 100%;
+    height: calc(100% / 3);
+    border: 7px solid #FFF8;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#grille .case {
+    color: #FFF8;
+    aspect-ratio: 1 / 1;
+    font-size: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#grille .case.actif {
+    background-color: green;
+}
+
+#erreurs {
+    text-align: center;
+}
+
+#pointages {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+#pointages p {
+    margin: 5px 0px;
+    color: #FFF8;
+    font-weight: bold;
+}
+
+.tricheur {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 50px;
+}

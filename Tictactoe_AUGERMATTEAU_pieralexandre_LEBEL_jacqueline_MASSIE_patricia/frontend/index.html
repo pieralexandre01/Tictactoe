@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tic-tac-toe</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            <header>
+                <form>
+                    <label>
+                        <span>Joueur X: </span>
+                        <input type="text" v-model="ordi1" :disabled="(en_cours_de_jeu == false) ? null : true" placeholder="API du joueur x">
+                        <select v-model="ordi1" :disabled="(en_cours_de_jeu == false) ? null : true">
+                            <option disabled value="">Presets</option>
+                            <option v-for="url of urls" :value="url[1]">{{ url[0] }}</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Joueur O: </span>
+                        <input type="text" v-model="ordi2" :disabled="(en_cours_de_jeu == false) ? null : true" placeholder="API du joueur o">
+                        <select v-model="ordi2" :disabled="(en_cours_de_jeu == false) ? null : true">
+                            <option disabled value="">Presets</option>
+                            <option v-for="url of urls" :value="url[1]">{{ url[0] }}</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Vitesse: </span>
+                        <input type="number" min="0" v-model="delai" :disabled="(en_cours_de_jeu == false) ? null : true">
+                        ms
+                    </label>
+                    <label>
+                        <span>Délai de fin: </span>
+                        <input type="number" min="0" v-model="delai_fin" :disabled="(en_cours_de_jeu == false) ? null : true">
+                        ms
+                    </label>
+                </form>
+                <div class="actions">
+                    <a class="bt bt-start" href="#" @click.prevent="debuter()" v-show="en_cours_de_jeu == false">Débuter</a>
+                    <a class="bt bt-stop" href="#" @click.prevent="arreter()" v-show="en_cours_de_jeu == true">Arrêter</a>
+                </div>
+            </header>
+            <div id="grille">
+                <div class="case"
+                    v-for="(pion, i) of grille"
+                    :class="{ actif: false }">
+                    {{ pion }}
+                </div>
+            </div>
+            <div id="erreurs" v-if="validation.success == false" :class="{ tricheur: validation.triche }">
+                <p>Joueur {{ validation.joueur.toUpperCase() }} : {{ validation.erreur }}</p>
+            </div>
+            <div id="pointages">
+                <p>Victoires de X : {{ victoires.x }} ({{ pourcentageVictoire(victoires.x) }}%)</p>
+                <p>Victoires de O : {{ victoires.o }} ({{ pourcentageVictoire(victoires.o) }}%)</p>
+                <p>Matchs nuls : {{ victoires.match_nul }} ({{ pourcentageVictoire(victoires.match_nul) }}%)</p>
+            </div>
+        </div>
+
+        <script src="js/main.js" type="module"></script>
+    </body>
+</html>
